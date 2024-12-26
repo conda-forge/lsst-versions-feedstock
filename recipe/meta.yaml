@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/lsst-versions-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/lsst-versions-{{ version }}.tar.gz
   sha256: e111718a5a13a9552648c71e78edb5a480dbf02d6733ba1424dff7650b491066
 
 build:
@@ -15,18 +15,18 @@ build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   script_env: PYTHONUTF8=1
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - setuptools
     - tomli >1.0
     - gitpython
     - packaging
     - pip
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - setuptools >=46.0
     - tomli >1.0.0
     - gitpython >=3.1
@@ -40,6 +40,7 @@ test:
     - lsst-version --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/lsst/lsst_versions
