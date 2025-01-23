@@ -1,13 +1,13 @@
 {% set name = "lsst-versions" %}
-{% set version = "1.5.0" %}
+{% set version = "1.6.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/lsst-versions-{{ version }}.tar.gz
-  sha256: e111718a5a13a9552648c71e78edb5a480dbf02d6733ba1424dff7650b491066
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: 2847b041e788dfa9e0bc453b2945442d5238a2a81bbfcd76f80233754d144ae6
 
 build:
   entry_points:
@@ -15,7 +15,7 @@ build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   script_env: PYTHONUTF8=1
-  number: 1
+  number: 0
 
 requirements:
   host:
