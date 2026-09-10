@@ -1,13 +1,13 @@
 {% set name = "lsst-versions" %}
-{% set version = "1.6.0" %}
+{% set version = "1.7.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 2847b041e788dfa9e0bc453b2945442d5238a2a81bbfcd76f80233754d144ae6
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/{{ name | replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: d013d919e2474438ccf73d3f6ec38401a4ad942f7c91ed1b5664c22ba0b67dec
 
 build:
   entry_points:
@@ -30,6 +30,7 @@ requirements:
     - setuptools >=46.0
     - tomli >1.0.0
     - gitpython >=3.1
+    - git
     - packaging
 
 test:
